@@ -18,7 +18,6 @@ on:
 jobs:
   build_example_library:
     name: Build Example library
-    needs: build_core
     runs-on: ubuntu-latest
 
     defaults:
