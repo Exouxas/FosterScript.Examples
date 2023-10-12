@@ -36,7 +36,7 @@ namespace FosterScript.Examples
 
             _children = ActorCanvas.Children;
 
-            IndefiniteWorld world = new(100); // Set refreshrate
+            IndefiniteWorld world = new(1000 / 30); // Set refreshrate to 30fps
             int count = 100;
 
 
