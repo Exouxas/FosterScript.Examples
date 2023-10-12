@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FosterScript.Examples.Finit
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FosterScript.Examples.IndefiniteExample", "IndefiniteExample\FosterScript.Examples.IndefiniteExample.csproj", "{508971A2-815D-4CE2-8B21-AA69507F2EAA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FosterScript.Examples.WpfExample", "FosterScript.Examples.WpfExample\FosterScript.Examples.WpfExample.csproj", "{A1B543D3-0C5B-4899-BACD-DC93702CF4B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{508971A2-815D-4CE2-8B21-AA69507F2EAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{508971A2-815D-4CE2-8B21-AA69507F2EAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{508971A2-815D-4CE2-8B21-AA69507F2EAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1B543D3-0C5B-4899-BACD-DC93702CF4B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1B543D3-0C5B-4899-BACD-DC93702CF4B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1B543D3-0C5B-4899-BACD-DC93702CF4B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1B543D3-0C5B-4899-BACD-DC93702CF4B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
