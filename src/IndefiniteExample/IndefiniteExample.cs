@@ -1,6 +1,7 @@
 ﻿using FosterScript.Core.Agents;
 using FosterScript.Core.Worlds;
 using FosterScript.Examples.Modules;
+using System.Numerics;
 
 namespace FosterScript.Examples
 {
@@ -36,7 +37,7 @@ namespace FosterScript.Examples
             }
 
             world.StepDone += Tick;
-            world.ActorKilled += (Actor actor) =>
+            world.ActorKilled += (Actor actor, Vector3 vector3) =>
             {
                 Console.WriteLine("Actor died! " + world.Actors.Count + " left");
 

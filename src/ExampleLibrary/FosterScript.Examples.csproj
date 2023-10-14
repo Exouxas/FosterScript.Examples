@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FosterScript.Core" Version="1.0.0-alpha" />
+    <PackageReference Include="FosterScript.Core" Version="1.0.3-alpha" />
   </ItemGroup>
 
 </Project>
