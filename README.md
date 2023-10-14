@@ -9,3 +9,6 @@ Shows how to use [IndefiniteWorld](https://github.com/Exouxas/FosterScript.Core/
 
 ## BasicBrainExample
 Shows how to use [Brain](https://github.com/Exouxas/FosterScript.Core/blob/main/src/Core/NeuralNetwork/Brain.cs) as the base class for a neural network, and runs it in an [Indefinite World](https://github.com/Exouxas/FosterScript.Core/blob/main/src/Core/Worlds/IndefiniteWorld.cs).
+
+## WpfExample
+An extended version of the BasicBrainExample that shows how you can use actors with neural networks in a WPF application.
