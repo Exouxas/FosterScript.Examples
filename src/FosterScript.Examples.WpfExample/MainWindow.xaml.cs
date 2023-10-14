@@ -30,6 +30,7 @@ namespace FosterScript.Examples
         private readonly UIElementCollection _children;
         private readonly Random random = new();
         private readonly Dictionary<Actor, Ellipse> actors = new();
+        private readonly IndefiniteWorld world = new(1000 / 60); // Set refreshrate to 60fps
 
         public MainWindow()
         {
@@ -37,9 +38,7 @@ namespace FosterScript.Examples
 
             _children = ActorCanvas.Children;
 
-            IndefiniteWorld world = new(1000 / 60); // Set refreshrate to 60fps
             int count = 100;
-
 
             for (int i = 0; i < count; i++)
             {
@@ -66,24 +65,8 @@ namespace FosterScript.Examples
 
             world.StepDone += Tick;
             world.ActorMoved += OnActorMoved;
-
-            world.ActorKilled += (Actor actor, Vector3 vector ) =>
-            {
-                Debug.WriteLine("Actor died! " + world.Actors.Count + " left");
-
-                Dispatcher.Invoke(() =>
-                {
-                    _children.Remove(actors[actor]);
-                });
-
-                actors.Remove(actor);
-
-                if (world.Actors.Count == 0)
-                {
-                    world.Stop();
-                    Debug.WriteLine("All actors died, stopped world");
-                }
-            };
+            world.ActorKilled += OnActorKilled;
+            
 
             world.Start();
         }
@@ -93,6 +76,24 @@ namespace FosterScript.Examples
             Ellipse circle = actors[actor];
 
             UpdatePosition(circle, newPosition.X, newPosition.Y);
+        }
+
+        private void OnActorKilled(Actor actor, Vector3 vector)
+        {
+            Debug.WriteLine("Actor died! " + world.Actors.Count + " left");
+
+            Dispatcher.Invoke(() =>
+            {
+                _children.Remove(actors[actor]);
+            });
+
+            actors.Remove(actor);
+
+            if (world.Actors.Count == 0)
+            {
+                world.Stop();
+                Debug.WriteLine("All actors died, stopped world");
+            }
         }
 
         private void Tick()
