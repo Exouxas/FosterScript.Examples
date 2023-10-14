@@ -80,6 +80,16 @@ namespace FosterScript.Examples
             // Remove actor and circle from dictionary
             actors.Remove(actor);
 
+            // Create death marker
+            Dispatcher.Invoke(() =>
+            {
+                Vector3 center = new((float)Window.Width / 2, (float)Window.Height / 2, 0);
+                foreach (Shape shape in CreateDeathMarker(vector + center))
+                {
+                    _children.Add(shape);
+                }
+            });
+
             if (world.Actors.Count == 0)
             {
                 world.Stop();
@@ -148,6 +158,32 @@ namespace FosterScript.Examples
             actor.Move(new Vector3((float)x, (float)y, 0));
 
             return actor;
+        }
+
+        private List<Shape> CreateDeathMarker(Vector3 position)
+        {
+            double size = 5;
+            List<Shape> shapes = new();
+
+            Line l1 = new();
+            l1.X1 = position.X - size;
+            l1.X2 = position.X + size;
+            l1.Y1 = position.Y - size;
+            l1.Y2 = position.Y + size;
+            l1.Stroke = Brushes.Black;
+            l1.StrokeThickness = 1;
+            shapes.Add(l1);
+
+            Line l2 = new();
+            l2.X1 = position.X + size;
+            l2.X2 = position.X - size;
+            l2.Y1 = position.Y - size;
+            l2.Y2 = position.Y + size;
+            l2.Stroke = Brushes.Black;
+            l2.StrokeThickness = 1;
+            shapes.Add(l2);
+
+            return shapes;
         }
     }
 }
