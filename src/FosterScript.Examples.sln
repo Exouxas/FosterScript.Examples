@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FosterScript.Examples.Finit
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FosterScript.Examples.IndefiniteExample", "IndefiniteExample\FosterScript.Examples.IndefiniteExample.csproj", "{508971A2-815D-4CE2-8B21-AA69507F2EAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FosterScript.Examples.WpfExample", "FosterScript.Examples.WpfExample\FosterScript.Examples.WpfExample.csproj", "{A1B543D3-0C5B-4899-BACD-DC93702CF4B3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FosterScript.Examples.WpfExample", "WpfExample\FosterScript.Examples.WpfExample.csproj", "{A1B543D3-0C5B-4899-BACD-DC93702CF4B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
