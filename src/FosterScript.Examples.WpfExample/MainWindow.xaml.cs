@@ -90,15 +90,9 @@ namespace FosterScript.Examples
 
         private void OnActorMoved(Actor actor, Vector3 oldPosition, Vector3 newPosition)
         {
-            double canvasWidth = ActorCanvas.ActualWidth;
-            double canvasHeight = ActorCanvas.ActualHeight;
-
             Ellipse circle = actors[actor];
-            double magnitude = 1;
-            double leftOffset = canvasWidth / 2 + newPosition.X * magnitude;
-            double topOffset = canvasHeight / 2 + newPosition.Y * magnitude;
 
-            UpdatePosition(circle, leftOffset, topOffset);
+            UpdatePosition(circle, newPosition.X, newPosition.Y);
         }
 
         private void Tick()
@@ -110,8 +104,15 @@ namespace FosterScript.Examples
         {
             Dispatcher.Invoke(() =>
             {
-                circle.SetValue(Canvas.LeftProperty, x);
-                circle.SetValue(Canvas.TopProperty, y);
+                double canvasWidth = Window.Width;
+                double canvasHeight = Window.Height;
+
+                double magnitude = 1;
+                double leftOffset = canvasWidth / 2 + x * magnitude;
+                double topOffset = canvasHeight / 2 + y * magnitude;
+
+                circle.SetValue(Canvas.LeftProperty, leftOffset);
+                circle.SetValue(Canvas.TopProperty, topOffset);
             });
         }
 
