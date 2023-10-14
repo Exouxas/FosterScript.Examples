@@ -90,16 +90,21 @@ namespace FosterScript.Examples
             double leftOffset = canvasWidth / 2 + newPosition.X * magnitude;
             double topOffset = canvasHeight / 2 + newPosition.Y * magnitude;
 
-            Dispatcher.Invoke(() =>
-            {
-                actors[actor].SetValue(Canvas.LeftProperty, leftOffset);
-                actors[actor].SetValue(Canvas.TopProperty, topOffset);
-            });
+            UpdatePosition(circle, leftOffset, topOffset);
         }
 
         private void Tick()
         {
-            //throw new NotImplementedException();
+            // Do something every tick
+        }
+
+        private void UpdatePosition(Ellipse circle, double x, double y)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                circle.SetValue(Canvas.LeftProperty, x);
+                circle.SetValue(Canvas.TopProperty, y);
+            });
         }
 
         private Actor CreateActor(World world)
