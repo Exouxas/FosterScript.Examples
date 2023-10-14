@@ -110,8 +110,8 @@ namespace FosterScript.Examples
                 double canvasHeight = Window.Height;
 
                 double magnitude = 1;
-                double leftOffset = canvasWidth / 2 + x * magnitude;
-                double topOffset = canvasHeight / 2 + y * magnitude;
+                double leftOffset = canvasWidth / 2 + x * magnitude - circle.Width / 2;
+                double topOffset = canvasHeight / 2 + y * magnitude - circle.Height / 2;
 
                 circle.SetValue(Canvas.LeftProperty, leftOffset);
                 circle.SetValue(Canvas.TopProperty, topOffset);
