@@ -66,6 +66,11 @@ namespace FosterScript.Examples.Modules.SmartModules
             float y = (float)movementYNeuron.Result;
             float normalizedDistance = (float)Math.Sqrt(x * x + y * y);
 
+            if (normalizedDistance <= 0)
+            {
+                return;
+            }
+
             // Normalize distance
             x /= normalizedDistance;
             y /= normalizedDistance;
