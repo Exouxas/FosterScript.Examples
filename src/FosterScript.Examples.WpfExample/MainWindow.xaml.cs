@@ -54,6 +54,13 @@ namespace FosterScript.Examples
                 _children.Add(circle);
 
                 actors.Add(actor, circle);
+
+                int r = 100;
+                double x = random.NextDouble() * r - r / 2d;
+                double y = random.NextDouble() * r - r / 2d;
+                actor.Move(new Vector3((float)x, (float)y, 0));
+                UpdatePosition(circle, x, y);
+
             }
 
             world.StepDone += Tick;
