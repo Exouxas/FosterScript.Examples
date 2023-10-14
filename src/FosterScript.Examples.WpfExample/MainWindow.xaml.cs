@@ -71,7 +71,10 @@ namespace FosterScript.Examples
             // Remove circle from canvas
             Dispatcher.Invoke(() =>
             {
+                if (_children.Contains(actors[actor]))
+                {
                 _children.Remove(actors[actor]);
+                }
             });
 
             // Remove actor and circle from dictionary
