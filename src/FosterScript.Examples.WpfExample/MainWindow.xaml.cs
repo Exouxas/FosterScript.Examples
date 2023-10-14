@@ -18,6 +18,7 @@ using FosterScript.Examples.Modules;
 using FosterScript.Core.Agents;
 using FosterScript.Core.Worlds;
 using System.Diagnostics;
+using FosterScript.Examples.Modules.SmartModules;
 
 namespace FosterScript.Examples
 {
@@ -117,21 +118,26 @@ namespace FosterScript.Examples
         private Actor CreateActor(World world)
         {
             Actor actor = new(world);
+            List<Module> modules = new();
 
-            Digestion d = new();
+            SmartDigestion d = new();
             d.DigestionRate = random.NextDouble() * 2;
             d.StoredMeat = random.NextDouble() * 50;
             d.StoredPlant = random.NextDouble() * 50;
-            actor.AddModule(d);
+            modules.Add(d);
 
-            Energy e = new();
+            SmartEnergy e = new();
             e.EnergyStored = random.NextDouble() * 10;
-            actor.AddModule(e);
+            modules.Add(e);
 
-            RandomMovement2D mov = new();
+            SmartMovement2D mov = new();
             mov.Speed = random.NextDouble() * 1 + 1;
-            actor.AddModule(mov);
+            modules.Add(mov);
 
+            BasicBrain brain = new();
+            modules.Add(brain);
+
+            actor.AddModule(modules);
             world.Add(actor);
 
             return actor;
