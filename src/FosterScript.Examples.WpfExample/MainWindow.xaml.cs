@@ -82,11 +82,13 @@ namespace FosterScript.Examples
         {
             Debug.WriteLine("Actor died! " + world.Actors.Count + " left");
 
+            // Remove circle from canvas
             Dispatcher.Invoke(() =>
             {
                 _children.Remove(actors[actor]);
             });
 
+            // Remove actor and circle from dictionary
             actors.Remove(actor);
 
             if (world.Actors.Count == 0)
