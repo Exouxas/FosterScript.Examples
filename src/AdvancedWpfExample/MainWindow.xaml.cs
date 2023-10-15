@@ -41,13 +41,17 @@ namespace FosterScript.Examples
             _world.StepDone += Tick;
             _world.ActorMoved += OnActorMoved;
             _world.ActorKilled += OnActorKilled;
-            }
+        }
 
         private void OnActorMoved(Actor actor, Vector3 oldPosition, Vector3 newPosition)
         {
             Ellipse circle = _actors[actor];
 
-            UpdatePosition(circle, newPosition.X, newPosition.Y);
+            Dispatcher.Invoke(() =>
+            {
+                circle.SetValue(Canvas.LeftProperty, newPosition.X - circle.Width / 2);
+                circle.SetValue(Canvas.TopProperty, newPosition.Y - circle.Height / 2);
+            });
         }
 
         private void OnActorKilled(Actor actor, Vector3 vector)
@@ -69,8 +73,7 @@ namespace FosterScript.Examples
             // Create death marker
             Dispatcher.Invoke(() =>
             {
-                Vector3 center = new((float)Window.Width / 2, (float)Window.Height / 2, 0);
-                foreach (Shape shape in CreateDeathMarker(vector + center))
+                foreach (Shape shape in CreateDeathMarker(vector))
                 {
                     _children.Add(shape);
                 }
@@ -86,22 +89,6 @@ namespace FosterScript.Examples
         private void Tick()
         {
             // Do something every tick
-        }
-
-        private void UpdatePosition(Ellipse circle, double x, double y)
-        {
-            Dispatcher.Invoke(() =>
-            {
-                double canvasWidth = Window.Width;
-                double canvasHeight = Window.Height;
-
-                double magnitude = 1;
-                double leftOffset = canvasWidth / 2 + x * magnitude - circle.Width / 2;
-                double topOffset = canvasHeight / 2 + y * magnitude - circle.Height / 2;
-
-                circle.SetValue(Canvas.LeftProperty, leftOffset);
-                circle.SetValue(Canvas.TopProperty, topOffset);
-            });
         }
 
         private Actor CreateActor(World world, double x, double y)
