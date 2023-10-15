@@ -8,6 +8,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="FosterScript.Core" Version="1.1.1-alpha" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<ProjectReference Include="..\ExampleLibrary\FosterScript.Examples.csproj" />
 	</ItemGroup>
 
