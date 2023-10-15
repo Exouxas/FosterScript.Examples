@@ -41,21 +41,7 @@ namespace FosterScript.Examples
             _world.StepDone += Tick;
             _world.ActorMoved += OnActorMoved;
             _world.ActorKilled += OnActorKilled;
-
-
-            int count = 100;
-            for (int i = 0; i < count; i++)
-            {
-                int r = 100;
-                double x = _random.NextDouble() * r - r / 2d;
-                double y = _random.NextDouble() * r - r / 2d;
-
-                Actor actor = CreateActor(_world, x, y);
             }
-
-
-            _world.Start();
-        }
 
         private void OnActorMoved(Actor actor, Vector3 oldPosition, Vector3 newPosition)
         {
@@ -184,6 +170,24 @@ namespace FosterScript.Examples
             shapes.Add(l2);
 
             return shapes;
+        }
+
+        private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            _world.WorldBounds = new Vector3((float)ActorCanvas.ActualWidth, (float)ActorCanvas.ActualHeight, 0);
+            _world.WorldWrap = true;
+            
+            int count = 100;
+            for (int i = 0; i < count; i++)
+            {
+                int r = 100;
+                double x = _random.NextDouble() * r - r / 2d + (float)ActorCanvas.ActualWidth / 2;
+                double y = _random.NextDouble() * r - r / 2d + (float)ActorCanvas.ActualHeight / 2;
+
+                Actor actor = CreateActor(_world, x, y);
+            }
+
+            _world.Start();
         }
     }
 }

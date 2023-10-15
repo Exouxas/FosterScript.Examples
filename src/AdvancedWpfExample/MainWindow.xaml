@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         x:Name="Window"
         Title="MainWindow" 
-        Height="800" Width="800" ResizeMode="NoResize">
+        Height="800" Width="800" ResizeMode="NoResize" Loaded="MainWindow_OnLoaded">
     <Canvas x:Name="ActorCanvas">
 
     </Canvas>
