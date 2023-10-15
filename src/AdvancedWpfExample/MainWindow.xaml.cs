@@ -110,6 +110,11 @@ namespace FosterScript.Examples
             mov.Speed = _random.NextDouble() * 1 + 1;
             modules.Add(mov);
 
+            SmartHealth health = new();
+            health.MaxHealth = _random.NextDouble() * 100;
+            health.CurrentHealth = _random.NextDouble() * health.MaxHealth;
+            modules.Add(health);
+
             BasicBrain brain = new();
             modules.Add(brain);
 
