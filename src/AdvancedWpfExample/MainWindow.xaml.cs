@@ -61,9 +61,12 @@ namespace FosterScript.Examples
             // Remove circle from canvas
             Dispatcher.Invoke(() =>
             {
-                if (_children.Contains(_actors[actor]))
+                if (_actors.ContainsKey(actor))
                 {
-                    _children.Remove(_actors[actor]);
+                    if (_children.Contains(_actors[actor]))
+                    {
+                        _children.Remove(_actors[actor]);
+                    }
                 }
             });
 
@@ -169,10 +172,10 @@ namespace FosterScript.Examples
             _world.WorldBounds = new Vector3((float)ActorCanvas.ActualWidth, (float)ActorCanvas.ActualHeight, 0);
             _world.WorldWrap = true;
             
-            int count = 100;
+            int count = 69;
             for (int i = 0; i < count; i++)
             {
-                int r = 100;
+                int r = 200;
                 double x = _random.NextDouble() * r - r / 2d + (float)ActorCanvas.ActualWidth / 2;
                 double y = _random.NextDouble() * r - r / 2d + (float)ActorCanvas.ActualHeight / 2;
 
