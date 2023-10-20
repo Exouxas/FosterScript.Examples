@@ -20,6 +20,7 @@ namespace FosterScript.Examples.Modules.SmartModules
 
         #region "Private values"
         private Brain brain;
+        private SmartEnergy energy;
         private OutputNode outputSpeedNeuron;
         private OutputNode movementXNeuron;
         private OutputNode movementYNeuron;
@@ -33,8 +34,9 @@ namespace FosterScript.Examples.Modules.SmartModules
 
         public override void Initialize()
         {
-            // Add brain to local value
+            // Add local value values
             brain = (Brain)DependencyReferences["BasicBrain"];
+            energy = (SmartEnergy)DependencyReferences["SmartEnergy"];
 
             // Add input nodes to brain
             InputNode inputSpeedNeuron = new("Speed", "Gives the hyperbolic tangent of the current speed", 0);
@@ -76,7 +78,7 @@ namespace FosterScript.Examples.Modules.SmartModules
             y /= normalizedDistance;
 
             // Exponentially more exhausting to move faster
-            ((SmartEnergy)DependencyReferences["SmartEnergy"]).EnergyStored -= Speed * Speed;
+            energy.EnergyStored -= Speed * Speed;
 
             Body?.Move(new Vector3(x * (float)Speed, y * (float)Speed, 0));
         }
